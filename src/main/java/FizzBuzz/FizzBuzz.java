@@ -1,23 +1,45 @@
 package FizzBuzz;
 
 public class FizzBuzz {
+    private int number;
+
+    public FizzBuzz(int number) {
+
+        this.number = number;
+    }
 
     public static String of(int i) {
 
-        if (isQiuzheng(i,3)&&isQiuzheng(i,5)) {
-            return"FizzBuzz";
+
+        if (i <=0){
+            throw new IllegalArgumentException();
         }
-        if (isQiuzheng(i, 3)) return "Fizz";
-        if (isQiuzheng(i, 5)) return "Buzz";
+
+        FizzBuzz fizzBuzz = new FizzBuzz(i);
+
+
+
+        if (fizzBuzz.isDiviaibleBy(3) && fizzBuzz.isDiviaibleBy(5)|| fizzBuzz.contains(3)&&fizzBuzz.contains(5)) {
+            return "FizzBuzz";
+        }
+        if (fizzBuzz.isDiviaibleBy(3) || fizzBuzz.contains(3)) {
+            return "Fizz";
+        }
+        if (fizzBuzz.isDiviaibleBy(5)||fizzBuzz.contains(5)) {
+            return "Buzz";
+        }
 
         return String.valueOf(i);
+
     }
 
-    private static boolean isQiuzheng(int i, int i2) {
-        if (i % i2 == 0 || String.valueOf(i).contains(String.valueOf(i2))) {
+    private boolean contains(int i) {
+        if (String.valueOf(number).contains(String.valueOf(i)))
             return true;
-        }
         return false;
     }
 
+    private boolean isDiviaibleBy(int i2) {
+        return this.number % i2 == 0;
+    }
 }
